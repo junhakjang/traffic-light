@@ -40,6 +40,7 @@ function light1 () {
     basic.showIcon(IconNames.No)
 }
 input.onButtonPressed(Button.A, function () {
+    A_button = 0
     people = 0
     light1()
 })
@@ -122,7 +123,9 @@ function sound_light1 () {
     basic.showIcon(IconNames.No)
 }
 input.onButtonPressed(Button.B, function () {
-    sound_light1()
+    if ((A_button && people) != 0) {
+        sound_light1()
+    }
 })
 function OFF () {
     range = strip.range(0, 1)
@@ -166,6 +169,7 @@ function YELLOW () {
 }
 let range: neopixel.Strip = null
 let people = 0
+let A_button = 0
 let count = 0
 let strip: neopixel.Strip = null
 let distance = 0
